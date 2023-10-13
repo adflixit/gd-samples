@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/game.gd" type="Script" id=3]
+[ext_resource path="res://src/world.gd" type="Script" id=5]
+[ext_resource path="res://src/main.gd" type="Script" id=6]
+
+[node name="Main" type="Node"]
+script = ExtResource( 6 )
+
+[node name="Game" type="Node" parent="."]
+script = ExtResource( 3 )
+
+[node name="World" type="Node2D" parent="Game"]
+script = ExtResource( 5 )
+
+[node name="Camera" type="Camera2D" parent="Game"]
+anchor_mode = 0
+current = true
+process_mode = 0
+
+[connection signal="paused" from="Game" to="Game" method="on_paused"]
+[connection signal="reset" from="Game" to="Game/World" method="on_reset"]
+[connection signal="setup" from="Game" to="Game/World" method="on_setup"]

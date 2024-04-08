@@ -17,5 +17,5 @@ func _process(delta):
 
 
 func flinch(pos, vel):
-	rotation_target = (pos.x - position.x) / A.platform_width * -sign(vel.y) * vel.length() / 1000
-	position_target = -vel / 8
+	rotation_target = (pos.x - position.x) / A.platform_width * vel.length() * 0.001
+	position_target = vel / 4
